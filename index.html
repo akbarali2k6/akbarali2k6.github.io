@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mohammed Akbar Ali - Portfolio</title>
-  <meta name="description" content="Portfolio of Mohammed Akbar Ali - 3rd Year Integrated M.Tech CSE Student specializing in Software Engineering" />
+  <meta name="description" content="Portfolio of Mohammed Akbar Ali - 3rd Year Integrated M.Tech CSE Student specializing in Software Engineering">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg1: #4a5568;
-      --bg2: #2d3748;
       --text: #0f172a;
       --muted: #475569;
-      --card: rgba(255,255,255,0.65);
-      --card-strong: rgba(255,255,255,0.8);
+      --card: rgba(255,255,255,0.97);
+      --card-strong: rgba(255,255,255,0.98);
       --border: rgba(15, 23, 42, 0.08);
       --primary: #2563eb;
       --mint: #75ffa7;
@@ -32,10 +30,7 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color: var(--text);
-      background:
-        radial-gradient(1200px 800px at 85% -20%, #cbd5e1 0, transparent 55%),
-        radial-gradient(900px 600px at 15% 120%, #dbeafe 0, transparent 55%),
-        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f5 50%, #f0f4f8 100%);
       background-attachment: fixed;
       line-height: 1.6;
       overflow-x: hidden;
@@ -137,7 +132,7 @@
     }
     .card h2 {
       margin: 0 0 1rem;
-      font-size: 1.5rem;
+      font-size: 2.25rem;
       font-weight: 700;
     }
     .card h3 {
@@ -183,6 +178,17 @@
       padding: 2rem 0;
       margin-top: 2rem;
       color: var(--muted);
+    }
+    .footer p {
+      margin: 0.5rem 0;
+    }
+    .footer .thank-you {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .footer .copyright {
+      padding-top: 1rem;
       border-top: 1px solid var(--border);
     }
     @media (max-width: 768px) {
@@ -201,13 +207,13 @@
         Open to Work
       </div>
       <div class="button-group">
-        <a href="https://www.linkedin.com/in/akbarali20/" class="button primary" target="_blank" rel="noopener noreferrer">
+        <a class="button primary" href="https://www.linkedin.com/in/akbarali20/" target="_blank" rel="noopener noreferrer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
           </svg>
           LinkedIn
         </a>
-        <a href="mailto:akbarali.m2023@vitstudent.ac.in" class="button">
+        <a class="button" href="mailto:mohammed.akbar2023@vitstudent.ac.in">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
             <polyline points="22,6 12,13 2,6"></polyline>
@@ -216,20 +222,17 @@
         </a>
       </div>
     </header>
-
     <main>
       <section class="card">
         <h2>About Me</h2>
         <p>I am Mohammed Akbar Ali, a 3rd-year Integrated M.Tech student at VIT Vellore, specializing in Computer Science and Engineering. My academic journey is complemented by hands-on experience in SaaS development, cybersecurity, and software engineering. I thrive on solving complex problems and building scalable, secure solutions.</p>
       </section>
-
       <section class="card">
         <h2>Education</h2>
         <h3>VIT Vellore</h3>
         <p>Integrated M.Tech in Computer Science and Engineering</p>
         <p>2023 - Present</p>
       </section>
-
       <section class="card">
         <h2>Work Experience</h2>
         <h3>SAS Analyst - ZepMenu</h3>
@@ -240,7 +243,6 @@
           <span class="cert-tag">Software Engineering</span>
         </div>
       </section>
-
       <section class="card">
         <h2>Certifications</h2>
         <div>
@@ -251,9 +253,9 @@
         <div style="margin-top: 1.5rem;">
           <h3>Ethics in Generative AI</h3>
           <p>Issued Jul 2023</p>
+          <p>Credential ID: LinkedIn Learning</p>
         </div>
       </section>
-
       <section class="card">
         <h2>Skills</h2>
         <div class="grid">
@@ -267,7 +269,6 @@
           <div class="skill-tag">Problem Solving</div>
         </div>
       </section>
-
       <section class="card">
         <h2>Recent Activities</h2>
         <ul>
@@ -279,9 +280,9 @@
         </ul>
       </section>
     </main>
-
     <footer class="footer">
-      <p>Thank you for visiting my portfolio!</p>
+      <p class="thank-you">Thank you for visiting my portfolio!</p>
+      <p class="copyright">© 2025 Mohammed Akbar Ali. All rights reserved.</p>
     </footer>
   </div>
 </body>
