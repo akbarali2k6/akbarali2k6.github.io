@@ -1,250 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mohammed Akbar Ali - Portfolio</title>
   <style>
     :root {
-      --bg: #f7f9fb;
-      --surface: #ffffff;
+      --bg: #eef4f9;
+      --surface: rgba(255, 255, 255, 0.6);
+      --surface-strong: rgba(255, 255, 255, 0.75);
       --text: #0f172a;
       --muted: #475569;
       --primary: #2563eb;
+      --cyan: #06b6d4;
       --mint: #75ffa7;
-      --ring: rgba(37, 99, 235, 0.2);
-      --shadow: 0 6px 20px rgba(2, 8, 23, 0.08);
-      --shadow-lg: 0 12px 40px rgba(2, 8, 23, 0.14);
-      --radius: 14px;
+      --ring: rgba(37, 99, 235, 0.25);
+      --shadow: 0 10px 30px rgba(2, 8, 23, 0.12);
+      --shadow-lg: 0 20px 60px rgba(2, 8, 23, 0.18);
+      --radius: 18px;
       --bezier: cubic-bezier(0.16, 1, 0.3, 1);
+      --glass-blur: blur(14px);
     }
+
     html, body { height: 100%; }
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color: var(--text);
-      background: radial-gradient(1200px 800px at 80% -20%, #eaf3ff 0, transparent 50%),
-                  radial-gradient(1200px 800px at -10% 20%, #e8fff1 0, transparent 50%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 800px at 80% -20%, #e8f1ff 0, transparent 50%),
+        radial-gradient(1200px 800px at -10% 20%, #e8fff1 0, transparent 55%),
+        linear-gradient(180deg, #f2f7fb 0%, #e5eef6 100%);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    .container { max-width: 1120px; margin: 0 auto; padding: 32px 20px 64px; }
-    
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 32px 20px 80px; }
+
+    /* Utility */
+    .glass {
+      background: var(--surface);
+      -webkit-backdrop-filter: var(--glass-blur);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: var(--shadow);
+    }
+
     /* Header */
     .header {
       text-align: center;
-      margin-bottom: 48px;
-      padding: 40px 24px;
-      background: var(--surface);
+      margin: 28px 0 52px;
+      padding: 48px 24px;
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      position: relative;
     }
-    .header h1 {
-      margin: 0 0 8px;
+    .header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(1000px 400px at 50% -10%, rgba(117,255,167,0.25), transparent 60%);
+    }
+    .name {
+      margin: 0 0 10px;
       font-size: 3.5rem;
       font-weight: 700;
-      line-height: 1.1;
-      text-shadow: 0 2px 10px rgba(37, 99, 235, 0.15);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      text-shadow: 0 3px 14px rgba(37, 99, 235, 0.18);
     }
-    .subtitle {
-      font-size: 1.125rem;
-      color: var(--muted);
-      margin: 12px 0;
-      line-height: 1.6;
-    }
-    .location {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin: 8px 0 16px;
-    }
+    .subtitle { font-size: 1.125rem; color: var(--muted); margin: 12px 0; line-height: 1.6; }
+    .location { font-size: 0.98rem; color: var(--muted); margin: 8px 0 18px; }
     .badge {
-      display: inline-block;
-      padding: 8px 16px;
-      background: var(--mint);
-      color: var(--text);
-      border-radius: 20px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      margin-top: 12px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; background: var(--mint); color: var(--text);
+      border-radius: 22px; font-size: 0.875rem; font-weight: 700;
+      box-shadow: 0 6px 20px rgba(117,255,167,0.4);
     }
-    
-    /* Sections */
-    .section {
-      margin-bottom: 48px;
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: var(--shadow);
-      transition: box-shadow 0.3s var(--bezier), transform 0.3s var(--bezier);
-    }
-    .section:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-2px);
-    }
-    .section h2 {
-      margin: 0 0 24px;
-      font-size: 2.25rem;
-      font-weight: 700;
-      border-bottom: 3px solid transparent;
-      padding-bottom: 12px;
-      background: linear-gradient(to right, var(--primary), #06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      transition: border-color 0.3s var(--bezier);
-    }
-    .section:hover h2 {
-      border-bottom-color: var(--primary);
-    }
-    
-    /* Cards */
-    .card {
-      padding: 24px;
-      margin-bottom: 24px;
-      background: var(--surface);
-      border: 1px solid #e2e8f0;
-      border-radius: var(--radius);
-      transition: all 0.3s var(--bezier);
-      position: relative;
-      overflow: hidden;
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(to right, var(--primary), #06b6d4);
-      transform: scaleX(0);
-      transition: transform 0.3s var(--bezier);
-    }
-    .card:hover::before {
-      transform: scaleX(1);
-    }
-    .card:hover {
-      border-color: var(--primary);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
-      transform: translateY(-4px);
-    }
-    .card:last-child { margin-bottom: 0; }
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-    .card .meta {
-      font-size: 0.875rem;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    .card .description {
-      line-height: 1.7;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-    
-    /* Tags */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .tag {
-      padding: 6px 12px;
-      background: #f1f5f9;
-      color: var(--text);
-      border-radius: 6px;
-      font-size: 0.8125rem;
-      font-weight: 500;
-    }
-    
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-    .skill-item {
-      padding: 20px;
-      background: #f8fafc;
-      border-radius: var(--radius);
-      text-align: center;
-      font-weight: 500;
-      transition: all 0.3s var(--bezier);
-      cursor: pointer;
-    }
-    .skill-item:hover {
-      background: linear-gradient(135deg, #eaf3ff 0%, #e8fff1 100%);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
-    }
-    
-    /* Activities */
-    .activities-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .activities-list li {
-      padding: 16px 0;
-      border-bottom: 1px solid #e2e8f0;
-      line-height: 1.6;
-    }
-    .activities-list li:last-child { border-bottom: none; }
-    .activities-list li::before {
-      content: '▸';
-      color: var(--primary);
-      font-weight: bold;
-      margin-right: 12px;
-    }
-    
-    /* Buttons */
+    .cta { margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      background: var(--primary);
-      color: white;
-      border-radius: var(--radius);
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s var(--bezier);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-      backdrop-filter: blur(10px);
+      display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px;
+      background: linear-gradient(135deg, rgba(37,99,235,0.9), rgba(6,182,212,0.9));
+      color: white; border-radius: 14px; text-decoration: none; font-weight: 700;
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.35);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      transition: transform .2s var(--bezier), box-shadow .2s var(--bezier), filter .2s var(--bezier);
     }
-    .btn:hover {
-      background: #1d4ed8;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-      transform: translateY(-2px);
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(37, 99, 235, 0.45); filter: saturate(1.05); }
+    .btn.secondary { background: rgba(255,255,255,0.75); color: var(--text); border: 1px solid rgba(15,23,42,0.08); box-shadow: 0 8px 22px rgba(2,8,23,0.12); }
+    .btn.secondary:hover { background: rgba(255,255,255,0.9); box-shadow: 0 14px 34px rgba(2,8,23,0.18); }
+
+    /* Section */
+    .section { margin-bottom: 48px; border-radius: var(--radius); padding: 28px; position: relative; overflow: hidden; }
+    .section .title {
+      margin: 0 0 22px; font-size: 2.25rem; font-weight: 700; letter-spacing: -0.01em;
+      background: linear-gradient(90deg, var(--primary), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    
+    .card { position: relative; border-radius: 16px; padding: 22px; border: 1px solid rgba(15,23,42,0.08); transition: transform .25s var(--bezier), box-shadow .25s var(--bezier), border-color .25s var(--bezier); overflow: hidden; }
+    .card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--cyan)); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--bezier); }
+    .card:hover::before { transform: scaleX(1); }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--ring); }
+    .card h3 { margin: 0 0 8px; font-size: 1.35rem; font-weight: 700; }
+    .meta { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; }
+    .description { line-height: 1.7; color: var(--text); }
+
+    /* Tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag { padding: 6px 12px; background: rgba(241,245,249,0.7); color: var(--text); border-radius: 999px; font-size: 0.82rem; font-weight: 600; border: 1px solid rgba(15,23,42,0.06); }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .skill-item { text-align: center; padding: 20px; border-radius: 14px; border: 1px solid rgba(15,23,42,0.08); transition: all .25s var(--bezier); cursor: default; position: relative; overflow: hidden; }
+    .skill-item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(6,182,212,0.12)); opacity: 0; transition: opacity .25s var(--bezier); }
+    .skill-item:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(2,8,23,0.12); }
+    .skill-item:hover::after { opacity: 1; }
+
+    /* Activities */
+    .activities { list-style: none; padding: 0; margin: 0; }
+    .activities li { padding: 16px 0; border-bottom: 1px solid rgba(15,23,42,0.08); line-height: 1.65; }
+    .activities li:last-child { border-bottom: none; }
+    .activities li::before { content: '▸'; color: var(--primary); font-weight: 800; margin-right: 10px; }
+
+    /* Footer */
+    footer { margin-top: 56px; border-radius: var(--radius); overflow: hidden; }
+    .thanks { padding: 26px; text-align: center; font-weight: 600; color: #0b172a; }
+    .divider { height: 1px; background: linear-gradient(90deg, rgba(2,8,23,0), rgba(2,8,23,0.15), rgba(2,8,23,0)); }
+    .copyright { padding: 18px; text-align: center; color: var(--muted); font-size: 0.95rem; }
+
+    /* Glass application */
+    .glass.section, .glass.card, .glass.header, footer.glass { background: var(--surface-strong); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); }
+
     /* Responsive */
     @media (max-width: 768px) {
-      .header h1 { font-size: 2.5rem; }
-      .section h2 { font-size: 1.75rem; }
-      .section { padding: 24px 20px; }
+      .name { font-size: 2.5rem; }
+      .section .title { font-size: 1.85rem; }
+      .section { padding: 22px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <h1>Mohammed Akbar Ali</h1>
+    <!-- Header -->
+    <header class="header glass">
+      <h1 class="name">Mohammed Akbar Ali</h1>
       <p class="subtitle">3rd Year Integrated M.Tech CSE Student | Specializing in Software Engineering | Aspiring Software Engineer</p>
       <p class="location">Chittoor, Andhra Pradesh, India</p>
-      <span class="badge">Open to Work</span>
-    </div>
+      <span class="badge" title="Availability status">Open to Work</span>
+      <div class="cta">
+        <a class="btn" href="#work">View Experience</a>
+        <a class="btn secondary" href="#contact">Contact</a>
+      </div>
+    </header>
 
-    <div class="section">
-      <h2>About</h2>
-      <p>I am a passionate and driven 3rd-year Integrated M.Tech Computer Science and Engineering student at Vellore Institute of Technology, Vellore. Currently, I am specializing in Software Engineering with a focus on building scalable solutions, implementing cybersecurity best practices, and developing SaaS applications. I am eager to leverage my technical skills and academic knowledge to contribute to innovative projects as a Software Engineer.</p>
-    </div>
+    <!-- About Me -->
+    <section id="about" class="section glass">
+      <h2 class="title">About Me</h2>
+      <div class="card glass">
+        <p class="description">
+          I am a passionate and driven 3rd-year Integrated M.Tech Computer Science and Engineering student at Vellore Institute of Technology, Vellore. I specialize in Software Engineering with a focus on building scalable solutions, implementing cybersecurity best practices, and developing SaaS applications. I am eager to leverage my technical skills and academic knowledge to contribute to innovative projects as a Software Engineer.
+        </p>
+      </div>
+    </section>
 
-    <div class="section">
-      <h2>Work Experience</h2>
-      <div class="card">
+    <!-- Education -->
+    <section id="education" class="section glass">
+      <h2 class="title">Education</h2>
+      <div class="card glass">
+        <h3>Vellore Institute of Technology, Vellore</h3>
+        <p class="meta">Integrated M.Tech in Computer Science and Engineering · Specialization: Software Engineering</p>
+        <p class="description">Currently in 3rd year, focusing on advanced software development, system design, and engineering principles.</p>
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="work" class="section glass">
+      <h2 class="title">Work Experience</h2>
+      <div class="card glass">
         <h3>SAS Analyst</h3>
         <p class="meta">ZepMenu · Jul 2025 - Present · Remote</p>
         <p class="description">Working on software analysis and development for a SaaS-based restaurant management platform, focusing on system optimization, data analysis, and implementing secure coding practices.</p>
@@ -254,57 +188,58 @@
           <span class="tag">Software Engineering</span>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>Education</h2>
-      <div class="card">
-        <h3>Vellore Institute of Technology, Vellore</h3>
-        <p class="meta">Integrated M.Tech in Computer Science and Engineering · Specialization: Software Engineering</p>
-        <p class="description">Currently in 3rd year, focusing on advanced software development, system design, and engineering principles.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Certifications</h2>
-      <div class="card">
+    <!-- Certifications -->
+    <section id="certs" class="section glass">
+      <h2 class="title">Certifications</h2>
+      <div class="card glass">
         <h3>Deloitte Australia Cyber Job Simulation</h3>
         <p class="meta">Issued Oct 2024 · Credential ID: 3ot9YHkrWa4YGKYjL</p>
         <p class="description">Completed a comprehensive cybersecurity job simulation covering threat analysis, security frameworks, and incident response.</p>
-        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Deloitte%20Australia/YPWCiGNTkr6QxcpEu_Deloitte%20Australia_3ot9YHkrWa4YGKYjL_1728802909701_completion_certificate.pdf" class="btn" target="_blank">View Credential</a>
+        <a class="btn secondary" href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Deloitte%20Australia/YPWCiGNTkr6QxcpEu_Deloitte%20Australia_3ot9YHkrWa4YGKYjL_1728802909701_completion_certificate.pdf" target="_blank" rel="noopener">View Credential</a>
       </div>
-      <div class="card">
+      <div class="card glass">
         <h3>Ethics in Generative AI</h3>
         <p class="meta">LinkedIn Learning · Issued Oct 2024 · Credential ID: AZdxcJgkHjm2r8yv4r6vBTzCW0-p</p>
         <p class="description">Explored ethical considerations, responsible AI practices, and governance frameworks for generative AI technologies.</p>
-        <a href="https://www.linkedin.com/learning/certificates/40ebc8dc99eb6c2e9c5ad062bc0d0b9301f00cd6a2c5c36e8b19bc1cf7a36168" class="btn" target="_blank">View Credential</a>
+        <a class="btn secondary" href="https://www.linkedin.com/learning/certificates/40ebc8dc99eb6c2e9c5ad062bc0d0b9301f00cd6a2c5c36e8b19bc1cf7a36168" target="_blank" rel="noopener">View Credential</a>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>Skills</h2>
+    <!-- Skills -->
+    <section id="skills" class="section glass">
+      <h2 class="title">Skills</h2>
       <div class="skills-grid">
-        <div class="skill-item">SaaS Development</div>
-        <div class="skill-item">Cybersecurity</div>
-        <div class="skill-item">Software Engineering</div>
-        <div class="skill-item">System Analysis</div>
-        <div class="skill-item">Data Analysis</div>
-        <div class="skill-item">Secure Coding</div>
-        <div class="skill-item">Problem Solving</div>
-        <div class="skill-item">Ethical AI</div>
+        <div class="skill-item glass">SaaS Development</div>
+        <div class="skill-item glass">Cybersecurity</div>
+        <div class="skill-item glass">Software Engineering</div>
+        <div class="skill-item glass">System Analysis</div>
+        <div class="skill-item glass">Data Analysis</div>
+        <div class="skill-item glass">Secure Coding</div>
+        <div class="skill-item glass">Problem Solving</div>
+        <div class="skill-item glass">Ethical AI</div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>Recent Activities</h2>
-      <ul class="activities-list">
+    <!-- Recent Activities -->
+    <section id="activities" class="section glass">
+      <h2 class="title">Recent Activities</h2>
+      <ul class="activities">
         <li>Started role as SAS Analyst at ZepMenu, focusing on SaaS platform development and optimization</li>
         <li>Completed Deloitte Australia Cyber Job Simulation, gaining hands-on experience in cybersecurity practices</li>
         <li>Earned Ethics in Generative AI certification from LinkedIn Learning</li>
         <li>Actively pursuing Software Engineering specialization as part of Integrated M.Tech program at VIT Vellore</li>
         <li>Open to new opportunities in Software Engineering roles</li>
       </ul>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass">
+      <div class="thanks">Thank you for visiting my portfolio!</div>
+      <div class="divider"></div>
+      <div class="copyright">© 2025 Mohammed Akbar Ali. All rights reserved.</div>
+    </footer>
   </div>
 </body>
 </html>
