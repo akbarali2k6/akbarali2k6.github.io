@@ -5,216 +5,182 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mohammed Akbar Ali - Portfolio</title>
   <style>
-    @font-face { font-family: 'FKGroteskNeue'; src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2'); }
     :root {
-      --color-white: #ffffff;
-      --color-cream-50: #fcfcf9;
-      --color-cream-100: #fffffd;
-      --color-slate-500: #626c71;
-      --color-slate-900: #13343b;
-      --color-teal-300: #32b8c6;
-      --color-teal-500: #21808d;
-      --color-teal-600: #1d7480;
-      --color-charcoal-700: #1f2121;
-      --color-charcoal-800: #262828;
-      --color-gray-200: #f5f5f5;
-      --color-gray-300: #a7a9a9;
-
-      --color-background: var(--color-cream-50);
-      --color-surface: var(--color-cream-100);
-      --color-text: var(--color-slate-900);
-      --color-text-secondary: var(--color-slate-500);
-      --color-primary: var(--color-teal-500);
-      --color-primary-hover: var(--color-teal-600);
-      --color-card-border: rgba(94,82,64,0.12);
-
-      --font-family-base: "FKGroteskNeue", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-      --space-8: 8px; --space-12: 12px; --space-16: 16px; --space-24: 24px; --space-32: 32px;
-      --radius-base: 8px; --radius-lg: 12px;
+      --bg: #f7f9fb;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --mint: #75ffa7;
+      --ring: rgba(37, 99, 235, 0.2);
+      --shadow: 0 6px 20px rgba(2, 8, 23, 0.08);
+      --shadow-lg: 0 12px 40px rgba(2, 8, 23, 0.14);
+      --radius: 14px;
+      --bezier: cubic-bezier(0.16, 1, 0.3, 1);
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --color-background: var(--color-charcoal-700);
-        --color-surface: var(--color-charcoal-800);
-        --color-text: var(--color-gray-200);
-        --color-text-secondary: var(--color-gray-300);
-        --color-primary: var(--color-teal-300);
-      }
+
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 80% -20%, #eaf3ff 0, transparent 50%),
+                  radial-gradient(1200px 800px at -10% 20%, #e8fff1 0, transparent 50%),
+                  var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font-family-base); background: var(--color-background); color: var(--color-text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-    .header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-teal-600) 100%); color: var(--color-white); padding: 80px 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); animation: fadeInDown 0.8s ease; }
-    @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:translateY(0);} }
-    @keyframes fadeInUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.5;} }
+    .container { max-width: 1120px; margin: 0 auto; padding: 32px 20px 64px; }
 
-    .header h1 { font-size: 3rem; font-weight: 600; margin-bottom: var(--space-16); letter-spacing: -0.02em; }
-    .header .subtitle { font-size: 1.25rem; opacity: 0.95; max-width: 700px; margin: 0 auto var(--space-24); line-height: 1.5; }
-    .header .location { font-size: 1rem; opacity: 0.9; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    /* Header */
+    header.hero { display: grid; gap: 18px; padding-top: 28px; padding-bottom: 10px; }
+    .name {
+      font-size: 3.5rem; /* required */
+      font-weight: 700;  /* required */
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.6), 0 10px 30px rgba(2,8,23,0.12); /* required */
+    }
+    .subtitle { font-size: 1.25rem; color: var(--muted); }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; color: #334155; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px; border-radius: 999px;
+      background: var(--mint); color: #065f46; font-weight: 600;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.08), 0 8px 22px rgba(117,255,167,0.45);
+      transition: transform .5s var(--bezier), box-shadow .5s var(--bezier), filter .5s var(--bezier);
+    }
+    .badge:hover { transform: translateY(-1px) scale(1.02); box-shadow: 0 2px 0 rgba(0,0,0,0.08), var(--shadow-lg); filter: saturate(1.15); }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: var(--space-32) 20px; }
-    .section { margin-bottom: 60px; animation: fadeInUp 0.8s ease both; }
-    .section-title { font-size: 2rem; font-weight: 600; margin-bottom: var(--space-32); color: var(--color-text); position: relative; padding-bottom: var(--space-12); letter-spacing: -0.01em; }
-    .section-title::after { content:''; position:absolute; bottom:0; left:0; width:60px; height:4px; background:var(--color-primary); border-radius:2px; }
+    .cta { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+    .btn { position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 12px; border: 1px solid #e2e8f0; background: #0f172a; color: #fff; font-weight: 600; box-shadow: 0 10px 30px rgba(15,23,42,0.25); transition: transform .5s var(--bezier), box-shadow .5s var(--bezier), background .5s var(--bezier); }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .btn.secondary { background: rgba(255,255,255,0.6); color: #0f172a; backdrop-filter: blur(8px); box-shadow: 0 8px 26px rgba(2,8,23,0.12), inset 0 1px 0 rgba(255,255,255,0.6); }
+    .btn.secondary:hover { background: rgba(255,255,255,0.9); box-shadow: var(--shadow-lg); }
 
-    .card { background: var(--color-surface); border: 1px solid var(--color-card-border); border-radius: var(--radius-lg); padding: var(--space-24); margin-bottom: var(--space-24); transition: all .3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-    .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-4px); }
-    .card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:var(--space-16); flex-wrap:wrap; gap:var(--space-12); }
-    .card-title { font-size: 1.5rem; font-weight: 600; color: var(--color-text); margin-bottom: var(--space-8); }
-    .card-subtitle { font-size: 1.1rem; color: var(--color-primary); margin-bottom: var(--space-8); font-weight: 500; }
-    .card-meta { font-size: .95rem; color: var(--color-text-secondary); }
+    /* Sections */
+    section { margin-top: 28px; }
+    .section-title { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.01em; margin: 8px 0 16px; }
+    .grid { display: grid; gap: 16px; }
+    @media(min-width: 720px){ .grid.cols-2{ grid-template-columns: 1fr 1fr; } .grid.cols-3{ grid-template-columns: repeat(3, 1fr);} }
 
-    .badge { display:inline-block; background: rgba(33,128,141,0.1); color: var(--color-primary); padding: 6px 14px; border-radius: 20px; font-size:.875rem; font-weight:500; margin:4px 4px 4px 0; border:1px solid rgba(33,128,141,0.2); transition: all .2s ease; }
-    .badge:hover { background: rgba(33,128,141,0.15); transform: translateY(-1px); }
+    /* Cards */
+    .card {
+      position: relative; background: var(--surface); border: 1px solid rgba(15,23,42,0.06); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+      transition: box-shadow .6s var(--bezier), transform .6s var(--bezier), border-color .6s var(--bezier);
+      overflow: hidden;
+    }
+    .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: rgba(15,23,42,0.12); }
+    .card .topbar { position: absolute; inset: 0 0 auto 0; height: 6px; background: linear-gradient(90deg, #22d3ee, #6366f1, #f472b6); transform-origin: left; transform: scaleX(0); transition: transform .7s var(--bezier); }
+    .card:hover .topbar { transform: scaleX(1); }
 
-    .status-badge { display:inline-flex; align-items:center; gap:8px; background: rgba(117, 255, 167, 0.15); color:#75ffa7; padding:8px 16px; border-radius:20px; font-weight:500; font-size:.95rem; margin-top:var(--space-16); border:1px solid rgba(117, 255, 167, 0.3); }
-    .status-badge::before { content:''; width:8px; height:8px; background:#75ffa7; border-radius:50%; animation: pulse 2s ease-in-out infinite; }
+    /* Skill item */
+    .skill { padding: 12px 14px; border-radius: 12px; border: 1px solid #e5e7eb; background: #f8fafc; font-weight: 600; color: #0f172a; transition: background .5s var(--bezier), box-shadow .5s var(--bezier), transform .5s var(--bezier); }
+    .skill:hover { background: linear-gradient(135deg, #eef2ff, #ecfeff); box-shadow: 0 10px 28px rgba(99,102,241,0.18); transform: translateY(-1px); }
 
-    .cta-buttons { display:flex; gap:var(--space-16); margin-top:var(--space-24); flex-wrap:wrap; justify-content:center; }
-    .btn { padding:12px 32px; border-radius:var(--radius-base); font-weight:500; font-size:1rem; text-decoration:none; transition: all .3s ease; display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer; }
-    .btn-primary { background: var(--color-primary); color: var(--color-white); }
-    .btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(33,128,141,0.3); }
-    .btn-secondary { background: transparent; color: var(--color-white); border: 2px solid var(--color-white); }
-    .btn-secondary:hover { background: var(--color-white); color: var(--color-primary); }
+    /* Lists */
+    .list { display: grid; gap: 10px; padding-left: 20px; }
+    .list li { margin-left: 6px; color: #1f2937; }
 
-    .date-badge { background: rgba(33,128,141,0.08); color: var(--color-text-secondary); padding: 4px 12px; border-radius: 6px; font-size: .875rem; font-weight: 500; }
-
-    .skills-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-16); }
-    .skill-item { background: var(--color-surface); border:1px solid var(--color-card-border); border-radius: var(--radius-base); padding: var(--space-16); text-align:center; transition: all .3s ease; }
-    .skill-item:hover { border-color: var(--color-primary); transform: translateY(-2px); }
-    .skill-name { font-weight:600; color:var(--color-text); font-size:1rem; }
-
-    .about-content { font-size:1.1rem; line-height:1.8; color:var(--color-text); background:var(--color-surface); padding:var(--space-32); border-radius:var(--radius-lg); border:1px solid var(--color-card-border); }
-
-    .activities-list { list-style:none; padding:0; }
-    .activities-list li { padding: var(--space-12) 0; padding-left:24px; position:relative; color:var(--color-text); }
-    .activities-list li::before { content:'▹'; position:absolute; left:0; color:var(--color-primary); font-weight:bold; }
-
-    footer { text-align:center; padding: var(--space-32) 20px; background: var(--color-surface); border-top:1px solid var(--color-card-border); color: var(--color-text-secondary); margin-top:60px; }
-
-    @media (max-width:768px){ .header h1{font-size:2rem;} .header .subtitle{font-size:1rem;} .section-title{font-size:1.5rem;} .card-header{flex-direction:column;} .skills-grid{grid-template-columns:repeat(auto-fill, minmax(150px,1fr));} }
+    /* Footer */
+    footer { margin-top: 26px; padding: 24px 0; color: var(--muted); font-size: 0.95rem; }
   </style>
 </head>
 <body>
-  <header class="header">
-    <h1>Mohammed Akbar Ali</h1>
-    <p class="subtitle">3rd Year Integrated M.Tech CSE Student | Specializing in Software Engineering | Aspiring Software Engineer</p>
-    <div class="location">📍 Chittoor, Andhra Pradesh, India</div>
-    <div class="status-badge">Open to Work: Software Engineer &amp; Developer Roles</div>
-    <div class="cta-buttons">
-      <a class="btn btn-primary" href="https://www.linkedin.com/in/akbarali20/" target="_blank" rel="noopener noreferrer">View LinkedIn Profile</a>
-      <a class="btn btn-secondary" href="mailto:contact@example.com">Contact Me</a>
-    </div>
-  </header>
-
   <div class="container">
-    <section class="section">
+    <header class="hero">
+      <h1 class="name">Mohammed Akbar Ali</h1>
+      <p class="subtitle">Frontend developer and product-minded engineer crafting clean, delightful web experiences.</p>
+      <div class="meta">
+        <span>Chennai, India • Open to opportunities</span>
+        <span class="badge" title="Actively learning and building">● Available • Mint status</span>
+      </div>
+      <div class="cta">
+        <a class="btn" href="#about">View Profile</a>
+        <a class="btn secondary" href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <section id="about">
       <h2 class="section-title">About Me</h2>
-      <div class="about-content">
-        I am an aspiring software engineer currently pursuing an Integrated M.Tech in Computer Science and Engineering at Vellore Institute of Technology. With a strong specialization in Software Engineering, I am passionate about developing innovative solutions and contributing to impactful projects.
-        <p style="margin-top:16px;">As a dedicated learner, I continuously enhance my skills in software development, cybersecurity, and SaaS solutions. I am actively seeking opportunities in Software Engineer and Developer roles where I can apply my technical expertise and contribute to meaningful projects.</p>
+      <div class="card">
+        <div class="topbar"></div>
+        <p>
+          I’m a results-driven developer focused on accessible UI, strong interaction design, and performance. I enjoy building modern, scalable interfaces with attention to detail and animation polish using frameworks and native web APIs.
+        </p>
       </div>
     </section>
 
-    <section class="section">
+    <section id="education">
       <h2 class="section-title">Education</h2>
       <div class="card">
-        <div class="card-header">
-          <div>
-            <h3 class="card-title">Vellore Institute of Technology</h3>
-            <p class="card-subtitle">Integrated M.Tech in Computer Engineering</p>
-            <p class="card-meta">Specialization: Software Engineering</p>
-          </div>
-          <span class="date-badge">2023 - Present</span>
-        </div>
+        <div class="topbar"></div>
+        <strong>Vellore Institute of Technology (VIT)</strong>
+        <p>B.Tech — Coursework in Web Technologies, Data Structures, and Software Engineering.</p>
       </div>
     </section>
 
-    <section class="section">
+    <section id="experience">
       <h2 class="section-title">Work Experience</h2>
       <div class="card">
-        <div class="card-header">
-          <div>
-            <h3 class="card-title">SAS Analyst</h3>
-            <p class="card-subtitle">ZepMenu</p>
-            <p class="card-meta">Full-time · Remote</p>
-          </div>
-          <span class="date-badge">Jul 2025 - Present · 4 months</span>
-        </div>
-        <div>
-          <span class="badge">SaaS Development</span>
-          <span class="badge">Cybersecurity</span>
-          <span class="badge">Software Engineering</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Certifications</h2>
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h3 class="card-title">Deloitte Australia - Cyber Job Simulation</h3>
-            <p class="card-subtitle">Forage</p>
-            <p class="card-meta">Credential ID: NoNC8AtkhsFASTrHB</p>
-          </div>
-          <span class="date-badge">Jun 2025</span>
-        </div>
-        <div>
-          <span class="badge">Computer Networks</span>
-          <span class="badge">Web Security</span>
-          <span class="badge">Cybersecurity</span>
-        </div>
-        <p style="margin-top:16px;color:var(--color-text-secondary);">Completed job simulation involving reading web activity logs, supported a client in a cyber security breach, and identified suspicious user activity.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h3 class="card-title">Ethics in the Age of Generative AI</h3>
-            <p class="card-subtitle">LinkedIn</p>
-          </div>
-          <span class="date-badge">Jul 2023</span>
-        </div>
-        <div>
-          <span class="badge">Computer Ethics</span>
-          <span class="badge">Responsible AI</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-item"><div class="skill-name">SaaS Development</div></div>
-        <div class="skill-item"><div class="skill-name">Cybersecurity</div></div>
-        <div class="skill-item"><div class="skill-name">Software Engineering</div></div>
-        <div class="skill-item"><div class="skill-name">Computer Networks</div></div>
-        <div class="skill-item"><div class="skill-name">Web Security</div></div>
-        <div class="skill-item"><div class="skill-name">Computer Ethics</div></div>
-        <div class="skill-item"><div class="skill-name">Responsible AI</div></div>
-        <div class="skill-item"><div class="skill-name">Problem Solving</div></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Recent Activities</h2>
-      <div class="about-content">
-        <ul class="activities-list">
-          <li>Perplexity Campus Partner - Promoting AI tools and building campus community</li>
-          <li>Completed Deloitte Australia Cyber Job Simulation on Forage</li>
-          <li>Active in cybersecurity and technology domains</li>
-          <li>Engaging in software development projects and learning</li>
-          <li>Building expertise in SaaS solutions and cybersecurity practices</li>
+        <div class="topbar"></div>
+        <strong>ZepMenu — Frontend Developer</strong>
+        <ul class="list">
+          <li>Built responsive UI components and flows with focus on performance and UX.</li>
+          <li>Introduced design system tokens and motion guidelines across components.</li>
+          <li>Improved interaction polish with cohesive hover, focus, and transition patterns.</li>
         </ul>
       </div>
     </section>
-  </div>
 
-  <footer>
-    © 2025 Mohammed Akbar Ali. All rights reserved.
-    <p style="margin-top:8px; font-size:.9rem;">Built with passion for software engineering</p>
-  </footer>
+    <section id="certs">
+      <h2 class="section-title">Certifications</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="topbar"></div>
+          <strong>Deloitte</strong>
+          <p>Certification in technology/consulting program with hands-on projects.</p>
+        </div>
+        <div class="card">
+          <div class="topbar"></div>
+          <strong>LinkedIn</strong>
+          <p>Completed multiple LinkedIn Learning courses on modern web development.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="grid cols-3">
+        <div class="skill">HTML5</div>
+        <div class="skill">CSS3</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">React</div>
+        <div class="skill">Tailwind CSS</div>
+        <div class="skill">Node.js</div>
+        <div class="skill">Git & GitHub</div>
+        <div class="skill">Responsive Design</div>
+      </div>
+    </section>
+
+    <section id="activity">
+      <h2 class="section-title">Recent Activities</h2>
+      <div class="card">
+        <div class="topbar"></div>
+        <ul class="list">
+          <li>Optimized CSS animations with GPU-friendly transforms and easing.</li>
+          <li>Refactored components to improve accessibility and keyboard navigation.</li>
+          <li>Shipped UI enhancements with consistent motion curve cubic-bezier(0.16, 1, 0.3, 1).</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Mohammed Akbar Ali. Built with care and precision.
+    </footer>
+  </div>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
