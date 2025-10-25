@@ -10,16 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg1: #eef7ff;
-      --bg2: #f2fff6;
+      --bg1: #4a5568;
+      --bg2: #2d3748;
       --text: #0f172a;
       --muted: #475569;
       --card: rgba(255,255,255,0.65);
       --card-strong: rgba(255,255,255,0.8);
       --border: rgba(15, 23, 42, 0.08);
       --primary: #2563eb;
-      --mint: #75ffa7; /* Open to Work badge color */
-      --mint-bg: rgba(117, 255, 167, 0.15); /* badge background */
+      --mint: #75ffa7;
+      --mint-bg: rgba(117, 255, 167, 0.15);
       --shadow: 0 10px 30px rgba(2, 8, 23, 0.12);
       --shadow-lg: 0 20px 60px rgba(2, 8, 23, 0.18);
       --radius: 18px;
@@ -33,144 +33,256 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color: var(--text);
       background:
-        radial-gradient(1200px 800px at 85% -20%, #eaf2ff 0, transparent 55%),
-        radial-gradient(1200px 800px at -15% 25%, #eafff3 0, transparent 60%),
-        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden; /* prevent horizontal scroll */
+        radial-gradient(1200px 800px at 85% -20%, #cbd5e1 0, transparent 55%),
+        radial-gradient(900px 600px at 15% 120%, #dbeafe 0, transparent 55%),
+        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+      background-attachment: fixed;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    img, svg { max-width: 100%; height: auto; }
-    .container { max-width: 1100px; margin: 0 auto; padding: clamp(40px, 6vw, 64px)  clamp(14px, 4vw, 24px)  clamp(32px, 5vw, 48px); }
-    .hero { text-align: center; margin-bottom: clamp(20px, 5vw, 40px); }
-    .name {
-      font-size: clamp(2rem, 6vw, 3.5rem); /* scales for mobile */
-      font-weight: 700;   /* exact weight */
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin: 0 0 clamp(8px, 2.5vw, 10px);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.7), 0 10px 30px rgba(2, 8, 23, 0.15); /* with text shadow */
+    a { text-decoration: none; color: inherit; }
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
     }
-    .subtitle { font-size: clamp(0.98rem, 2.8vw, 1.15rem); color: var(--muted); margin: 0 0 clamp(10px, 3vw, 18px); }
-    .location { color: var(--muted); font-weight: 500; margin: 0 0 clamp(12px, 3.5vw, 24px); }
-    .open-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--mint-bg); border: 1px solid var(--mint);
-      color: #065f46; font-weight: 700; padding: 10px 16px; border-radius: 999px;
-      box-shadow: 0 4px 20px rgba(117,255,167,0.25);
-      margin-bottom: clamp(12px, 3vw, 20px);
-      white-space: nowrap;
+    .header {
+      padding: 3rem 0 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
     }
-    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
-    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; text-decoration: none; font-weight: 600; transition: all .3s var(--bezier); box-shadow: var(--shadow); min-height: 44px; }
-    .btn svg { width: 20px; height: 20px; }
-    .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-    .btn-secondary { background: var(--card-strong); color: var(--text); border: 1px solid var(--border); backdrop-filter: var(--glass); }
-    .btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-
-    .grid { display: grid; grid-template-columns: 1fr; gap: clamp(12px, 3vw, 18px); margin-top: clamp(16px, 4vw, 28px); }
-    @media (min-width: 880px) { .grid { grid-template-columns: 1fr 1fr; } }
-
-    .card { background: var(--card); border: 1px solid rgba(255,255,255,0.9); border-radius: clamp(14px, 2.5vw, var(--radius)); padding: clamp(18px, 3.2vw, 26px); backdrop-filter: var(--glass); box-shadow: var(--shadow); transition: transform .35s var(--bezier), box-shadow .35s var(--bezier); }
-    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .card h2 { margin: 0 0 clamp(8px, 2.6vw, 12px); font-size: clamp(1.1rem, 3.2vw, 1.35rem); font-weight: 800; }
-    .meta { color: var(--muted); font-weight: 600; margin-bottom: 6px; font-size: clamp(.95rem, 2.8vw, 1rem); }
-    .muted { color: var(--muted); font-size: clamp(.95rem, 2.8vw, 1rem); line-height: 1.7; }
-
-    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .badge { padding: 6px 10px; border-radius: 999px; background: rgba(37,99,235,0.08); color: #1f4ed1; font-weight: 700; border: 1px solid rgba(37,99,235,0.18); font-size: clamp(.85rem, 2.4vw, .95rem); }
-
-    .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
-    @media (min-width: 540px) { .skills { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-    @media (min-width: 880px) { .skills { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-    .skill { text-align: center; background: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.95); padding: clamp(12px, 2.8vw, 14px); border-radius: 12px; font-weight: 700; min-height: 44px; display: grid; place-items: center; }
-
-    .activities { margin-top: 10px; padding-left: 18px; }
-    .activities li { margin-bottom: 6px; }
-
-    footer { text-align: center; color: var(--muted); padding: clamp(22px, 4vw, 36px) 16px clamp(36px, 5vw, 54px); }
-    .footer-note { margin-bottom: 6px; font-weight: 600; }
-    .sep { height: 1px; background: rgba(15,23,42,0.08); margin: 18px auto; max-width: 800px; }
-
-    /* Small screens ≤ 768px */
+    .header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .header .subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--mint-bg);
+      color: var(--mint);
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: 2rem;
+      border: 1px solid var(--mint);
+      margin-bottom: 1.5rem;
+    }
+    .badge .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--mint);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--card-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s var(--bezier);
+      backdrop-filter: var(--glass);
+      -webkit-backdrop-filter: var(--glass);
+      box-shadow: var(--shadow);
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .button.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--glass);
+      -webkit-backdrop-filter: var(--glass);
+      transition: transform 0.3s var(--bezier), box-shadow 0.3s var(--bezier);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card h2 {
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    .card p, .card ul {
+      margin: 0.5rem 0;
+      color: var(--muted);
+    }
+    .card ul {
+      padding-left: 1.5rem;
+    }
+    .card li {
+      margin: 0.25rem 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-tag, .cert-tag {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--card-strong);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin: 0.25rem;
+      transition: all 0.3s var(--bezier);
+    }
+    .skill-tag:hover, .cert-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .cert-tag {
+      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
     @media (max-width: 768px) {
-      .btn { width: 100%; justify-content: center; }
-      .open-badge { font-size: .95rem; padding: 9px 14px; }
-      .hero { margin-bottom: 28px; }
-      .card { padding: 18px; }
-    }
-    /* Extra small screens ≤ 480px */
-    @media (max-width: 480px) {
-      .subtitle { line-height: 1.5; }
-      .btns { gap: 10px; }
-      .badge { padding: 6px 9px; }
-      .open-badge { gap: 8px; padding: 8px 12px; }
-      .activities { padding-left: 16px; }
+      .header h1 { font-size: 2.5rem; }
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <section class="hero">
-      <h1 class="name">Mohammed Akbar Ali</h1>
-      <p class="subtitle">3rd Year Integrated M.Tech CSE Student | Specializing in Software Engineering | Aspiring Software Engineer</p>
-      <p class="location">Chittoor, Andhra Pradesh, India</p>
-      <div class="open-badge" title="Open to Work" aria-label="Open to Work" style="--mint:#75ffa7;--mint-bg: rgba(117, 255, 167, 0.15);">
-        <svg viewBox="0 0 24 24" fill="#10b981" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Zm-1.2-6.2 6-6a1 1 0 1 1 1.4 1.4l-6.7 6.7a1 1 0 0 1-1.4 0l-3.3-3.3a1 1 0 1 1 1.4-1.4l2.6 2.6Z"/></svg>
+    <header class="header">
+      <h1>Mohammed Akbar Ali</h1>
+      <p class="subtitle">3rd Year Integrated M.Tech CSE Student | VIT Vellore</p>
+      <div class="badge">
+        <span class="dot"></span>
         Open to Work
       </div>
-      <div class="btns">
-        <a class="btn btn-primary" href="https://www.linkedin.com/in/akbarali20/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
-          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M20.452 20.452h-3.554v-5.569c0-1.328-.024-3.036-1.85-3.036-1.853 0-2.136 1.447-2.136 2.943v5.662H9.36V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.605 0 4.27 2.373 4.27 5.459v6.282zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zm1.777 13.019H3.559V9h3.555v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <div class="button-group">
+        <a href="https://www.linkedin.com/in/akbarali20/" class="button primary" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+          </svg>
           LinkedIn
         </a>
-        <a class="btn btn-secondary" href="mailto:akbarali@example.com" aria-label="Contact Me via Email">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.236-7.2 4.5a2 2 0 0 1-2.1 0L3.5 8.236V18.5a.5.5 0 0 0 .5.5h16a.5.5 0 0 0 .5-.5V8.236ZM19.7 6H4.3L12 10.8 19.7 6Z"/></svg>
+        <a href="mailto:akbarali.m2023@vitstudent.ac.in" class="button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
           Contact Me
         </a>
       </div>
-    </section>
+    </header>
 
-    <div class="grid">
-      <section class="card" aria-labelledby="about">
-        <h2 id="about">About</h2>
-        <p class="muted">I am a passionate software engineering student at VIT, driven by building reliable, secure, and scalable software. I enjoy designing systems, crafting seamless experiences, and continually learning modern engineering practices.</p>
+    <main>
+      <section class="card">
+        <h2>About Me</h2>
+        <p>I am Mohammed Akbar Ali, a 3rd-year Integrated M.Tech student at VIT Vellore, specializing in Computer Science and Engineering. My academic journey is complemented by hands-on experience in SaaS development, cybersecurity, and software engineering. I thrive on solving complex problems and building scalable, secure solutions.</p>
       </section>
 
-      <section class="card" aria-labelledby="education">
-        <h2 id="education">Education</h2>
-        <div class="meta">Vellore Institute of Technology</div>
-        <div class="muted">Integrated M.Tech in Computer Engineering</div>
-        <div class="muted">Specialization: Software Engineering</div>
-        <div class="muted">2023 - Present</div>
+      <section class="card">
+        <h2>Education</h2>
+        <h3>VIT Vellore</h3>
+        <p>Integrated M.Tech in Computer Science and Engineering</p>
+        <p>2023 - Present</p>
       </section>
 
-      <section class="card" aria-labelledby="experience">
-        <h2 id="experience">Work Experience</h2>
-        <div class="meta">SAS Analyst · ZepMenu</div>
-        <div class="muted">Full-time · Remote</div>
-        <div class="muted">Jul 2025 - Present · 4 months</div>
-        <div class="badges">
-          <span class="badge">SaaS Development</span>
-          <span class="badge">Cybersecurity</span>
-          <span class="badge">Software Engineering</span>
-        </div>
-      </section>
-
-      <section class="card" aria-labelledby="certs">
-        <h2 id="certs">Certifications</h2>
+      <section class="card">
+        <h2>Work Experience</h2>
+        <h3>SAS Analyst - ZepMenu</h3>
+        <p>Jul 2025 - Present · Remote</p>
         <div>
-          <div class="meta">Deloitte Australia - Cyber Job Simulation · Forage</div>
-          <div class="muted">Credential ID: NoNC8AtkhsFASTrHB</div>
-          <div class="muted">Jun 2025</div>
-          <div class="badges">
-            <span class="badge">Computer Networks</span>
-            <span class="badge">Web Security</span>
-            <span class="badge">Cybersecurity</span>
-          </div>
+          <span class="cert-tag">SaaS Development</span>
+          <span class="cert-tag">Cybersecurity</span>
+          <span class="cert-tag">Software Engineering</span>
         </div>
-        <div style="margin-top:12px">
-          <div class="meta">Ethics in the Age of Generative AI · LinkedIn</div>
-          <div class="muted">Jul 2023</div>
-          <div class="badges">
+      </section>
+
+      <section class="card">
+        <h2>Certifications</h2>
+        <div>
+          <h3>Deloitte Australia Cyber Job Simulation</h3>
+          <p>Issued Jun 2025</p>
+          <p>Credential ID: NoNC8AtkhsFASTrHB</p>
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <h3>Ethics in Generative AI</h3>
+          <p>Issued Jul 2023</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Skills</h2>
+        <div class="grid">
+          <div class="skill-tag">SaaS Development</div>
+          <div class="skill-tag">Cybersecurity</div>
+          <div class="skill-tag">Software Engineering</div>
+          <div class="skill-tag">Computer Networks</div>
+          <div class="skill-tag">Web Security</div>
+          <div class="skill-tag">Computer Ethics</div>
+          <div class="skill-tag">Responsible AI</div>
+          <div class="skill-tag">Problem Solving</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Recent Activities</h2>
+        <ul>
+          <li>Completed Deloitte Australia Cyber Security Job Simulation (Jun 2025)</li>
+          <li>Started role as SAS Analyst at ZepMenu (Jul 2025)</li>
+          <li>Pursuing Integrated M.Tech at VIT Vellore (2023-Present)</li>
+          <li>Completed Ethics in Generative AI Certification (Jul 2023)</li>
+          <li>Actively exploring opportunities in Software Engineering and Cybersecurity</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Thank you for visiting my portfolio!</p>
+    </footer>
+  </div>
+</body>
+</html>
