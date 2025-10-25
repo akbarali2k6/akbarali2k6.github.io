@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Akbar Ali - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .about-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        .experience-item, .education-item, .certification-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .experience-item h3, .education-item h3, .certification-item h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .activities-list {
+            list-style: none;
+        }
+        
+        .activities-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .activities-list li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mohammed Akbar Ali</h1>
+            <p class="tagline">Software Developer | Tech Enthusiast | Problem Solver</p>
+        </header>
+        
+        <section class="section about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Hello! I'm Mohammed Akbar Ali, a passionate software developer with a strong foundation in computer science and engineering. I'm dedicated to creating innovative solutions and continuously expanding my technical expertise. With hands-on experience in full-stack development and a keen interest in emerging technologies, I strive to build applications that make a real impact.</p>
+            </div>
+        </section>
+        
+        <section class="section education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>VIT (Vellore Institute of Technology)</h3>
+                <p class="date">Bachelor of Technology in Computer Science and Engineering</p>
+                <p>Pursuing comprehensive education in computer science fundamentals, software engineering, data structures, algorithms, and modern development practices. Actively engaged in academic projects and technical activities.</p>
+            </div>
+        </section>
+        
+        <section class="section experience">
+            <h2>Work Experience</h2>
+            <div class="experience-item">
+                <h3>ZepMenu - Software Developer</h3>
+                <p class="date">Professional Experience</p>
+                <p>Contributing to the development of innovative restaurant management solutions. Working on full-stack development projects, implementing new features, and optimizing application performance. Collaborating with cross-functional teams to deliver high-quality software solutions that enhance user experience.</p>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>Developed and maintained web applications using modern frameworks</li>
+                    <li>Implemented responsive design principles for optimal user experience</li>
+                    <li>Collaborated with team members on code reviews and best practices</li>
+                    <li>Participated in agile development processes and sprint planning</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="section certifications">
+            <h2>Certifications</h2>
+            <div class="certification-item">
+                <h3>Deloitte Certification</h3>
+                <p class="date">Professional Development</p>
+                <p>Completed professional certification program from Deloitte, gaining insights into industry best practices, consulting methodologies, and business technology solutions.</p>
+            </div>
+            <div class="certification-item">
+                <h3>LinkedIn Certifications</h3>
+                <p class="date">Continuous Learning</p>
+                <p>Achieved multiple LinkedIn Learning certifications covering various aspects of software development, including programming languages, frameworks, and professional skills development.</p>
+            </div>
+        </section>
+        
+        <section class="section skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">React.js</div>
+                <div class="skill-item">Node.js</div>
+                <div class="skill-item">HTML5 & CSS3</div>
+                <div class="skill-item">Git & GitHub</div>
+                <div class="skill-item">SQL</div>
+                <div class="skill-item">REST APIs</div>
+                <div class="skill-item">Responsive Design</div>
+                <div class="skill-item">Problem Solving</div>
+                <div class="skill-item">Agile Methodology</div>
+                <div class="skill-item">Team Collaboration</div>
+            </div>
+        </section>
+        
+        <section class="section activities">
+            <h2>Recent Activities</h2>
+            <ul class="activities-list">
+                <li>Contributed to open-source projects on GitHub</li>
+                <li>Participated in coding challenges and hackathons</li>
+                <li>Completed advanced courses in web development and software engineering</li>
+                <li>Engaged in technical workshops and seminars at VIT</li>
+                <li>Built personal projects to explore new technologies and frameworks</li>
+                <li>Mentored junior students in programming fundamentals</li>
+                <li>Attended industry conferences and networking events</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Mohammed Akbar Ali. All rights reserved.</p>
+            <p>Building the future, one line of code at a time.</p>
+        </footer>
+    </div>
+</body>
+</html>
